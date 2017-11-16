@@ -93,8 +93,8 @@ public class StandardBorderPainter implements SubstanceBorderPainter {
 			// issue 433 - the "c" can be null when painting
 			// the border of a tree icon used outside the
 			// JTree context.
-			boolean isSpecialButton = (c == null)? false : 
-				c.getClass().isAnnotationPresent(SubstanceInternalArrowButton.class);
+			 boolean isSpecialButton = (c != null)
+		                && c.getClass().isAnnotationPresent(SubstanceInternalArrowButton.class);
 			int joinKind = isSpecialButton ? BasicStroke.JOIN_MITER
 					: BasicStroke.JOIN_ROUND;
 			int capKind = isSpecialButton ? BasicStroke.CAP_SQUARE
