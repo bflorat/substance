@@ -54,8 +54,7 @@ public class StandardBorderPainter implements SubstanceBorderPainter {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.pushingpixels.substance.api.trait.SubstanceTrait#getDisplayName()
+	 * @see org.pushingpixels.substance.api.trait.SubstanceTrait#getDisplayName()
 	 */
 	public String getDisplayName() {
 		return "Standard";
@@ -64,8 +63,7 @@ public class StandardBorderPainter implements SubstanceBorderPainter {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.pushingpixels.substance.api.painter.border.SubstanceBorderPainter
+	 * @see org.pushingpixels.substance.api.painter.border.SubstanceBorderPainter
 	 * #isPaintingInnerContour()
 	 */
 	@Override
@@ -95,7 +93,8 @@ public class StandardBorderPainter implements SubstanceBorderPainter {
 			// issue 433 - the "c" can be null when painting
 			// the border of a tree icon used outside the
 			// JTree context.
-			boolean isSpecialButton = c.getClass().isAnnotationPresent(SubstanceInternalArrowButton.class);
+			boolean isSpecialButton = (c == null)? false : 
+				c.getClass().isAnnotationPresent(SubstanceInternalArrowButton.class);
 			int joinKind = isSpecialButton ? BasicStroke.JOIN_MITER
 					: BasicStroke.JOIN_ROUND;
 			int capKind = isSpecialButton ? BasicStroke.CAP_SQUARE
@@ -127,8 +126,8 @@ public class StandardBorderPainter implements SubstanceBorderPainter {
 	}
 
 	/**
-	 * Computes the color of the middle portion of the border. Override to
-	 * provide different visual.
+	 * Computes the color of the middle portion of the border. Override to provide
+	 * different visual.
 	 * 
 	 * @param borderScheme
 	 *            The border color scheme.
@@ -139,8 +138,8 @@ public class StandardBorderPainter implements SubstanceBorderPainter {
 	}
 
 	/**
-	 * Computes the color of the bottom portion of the border. Override to
-	 * provide different visual.
+	 * Computes the color of the bottom portion of the border. Override to provide
+	 * different visual.
 	 * 
 	 * @param borderScheme
 	 *            The border color scheme.
@@ -149,7 +148,7 @@ public class StandardBorderPainter implements SubstanceBorderPainter {
 	public Color getBottomBorderColor(SubstanceColorScheme borderScheme) {
 		return SubstanceColorUtilities.getBottomBorderColor(borderScheme);
 	}
-	
+
 	@Override
 	public Color getRepresentativeColor(SubstanceColorScheme borderScheme) {
 		return this.getMidBorderColor(borderScheme);
